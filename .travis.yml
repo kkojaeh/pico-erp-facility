@@ -6,8 +6,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 install:
-
-before_script:
+  - gradle clean
 
 script:
-  - gradle clean build
+  - gradle build
