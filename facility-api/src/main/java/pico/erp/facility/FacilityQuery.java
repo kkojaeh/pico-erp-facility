@@ -11,6 +11,8 @@ public interface FacilityQuery {
 
   List<? extends LabeledValuable> asCategoryLabels();
 
-  Page<FacilityView> retrieve(@NotNull FacilityView.Filter filter, Pageable pageable);
+  List<? extends LabeledValuable> asLabels(@NotNull String keyword, long limit);
+
+  Page<FacilityView> retrieve(@NotNull FacilityView.Filter filter, @NotNull Pageable pageable);
 
 }

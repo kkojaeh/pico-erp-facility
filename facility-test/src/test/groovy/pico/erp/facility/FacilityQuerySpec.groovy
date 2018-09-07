@@ -49,4 +49,12 @@ class FacilityQuerySpec extends Specification {
     result.totalElements == 3
   }
 
+  def "라벨 검색"() {
+    when:
+    def result = facilityQuery.asLabels("포장", 10)
+
+    then:
+    result.size() == 3
+  }
+
 }

@@ -6,9 +6,11 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.constraints.NotNull;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,7 @@ import org.springframework.validation.annotation.Validated;
 import pico.erp.facility.FacilityQuery;
 import pico.erp.facility.core.FacilityCategoryRepository;
 import pico.erp.facility.data.FacilityView;
+import pico.erp.facility.impl.jpa.FacilityEntity;
 import pico.erp.facility.impl.jpa.QFacilityEntity;
 import pico.erp.shared.ExtendedLabeledValue;
 import pico.erp.shared.Public;
@@ -51,6 +54,34 @@ public class FacilityQueryJpa implements FacilityQuery {
         .label(category.getName())
         .build()
       ).collect(Collectors.toList());
+  }
+
+  @Override
+  public List<? extends LabeledValuable> asLabels(@NotNull String keyword, long limit) {
+    val query = new JPAQuery<FacilityEntity>(entityManager);
+    query.select(facility);
+    query.from(facility);
+    query.where(
+      facility.name.likeIgnoreCase(queryDslJpaSupport.toLikeKeyword("%", keyword, "%"))
+    );
+    query.limit(limit);
+    query.orderBy(facility.name.asc());
+
+    return query.fetch().stream()
+      .map(entity -> ExtendedLabeledValue.builder()
+        .value(entity.getId().getValue())
+        .label(entity.getName())
+        .subLabel(
+          Optional.ofNullable(entity.getCategoryId())
+            .map(categoryId -> facilityCategoryRepository.findBy(categoryId)
+              .map(category -> category.getName())
+              .orElse(null)
+            )
+            .orElse(null)
+        )
+        .build()
+      )
+      .collect(Collectors.toList());
   }
 
   @Override
