@@ -6,10 +6,10 @@ cache:
     - $HOME/.gradle/wrapper/
 
 install:
-  - ./gradlew clean
+  - gradle clean
 
 script:
-  - ./gradlew build
+  - gradle build
 
-after_script:
-  - echo $TRAVIS_TEST_RESULT
+after_failure:
+  - cat file:///home/travis/build/kkojaeh/pico-erp-facility/facility-test/build/reports/tests/test/index.html
