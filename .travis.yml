@@ -6,17 +6,10 @@ cache:
     - $HOME/.gradle/wrapper/
 
 install:
-  - gradle clean
+  - ./gradle clean
 
 script:
-  - gradle build
+  - ./gradle build
 
 after_script:
   - echo $TRAVIS_TEST_RESULT
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  local-dir: $TRAVIS_TEST_RESULT
