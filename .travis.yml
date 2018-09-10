@@ -9,6 +9,6 @@ install:
   - gradle clean
 
 script:
-  - gradle build || exit 0
+  - gradle build | exit 0
   - cat file:///home/travis/build/kkojaeh/pico-erp-facility/facility-test/build/reports/tests/test/index.html
 
