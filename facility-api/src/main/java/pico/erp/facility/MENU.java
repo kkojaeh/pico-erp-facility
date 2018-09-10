@@ -10,7 +10,7 @@ import pico.erp.shared.data.MenuCategory;
 @Getter
 public enum MENU implements Menu {
 
-  FACILITY_MANAGEMENT("/work-day", "fas fa-building", MenuCategory.SETTINGS);
+  FACILITY_MANAGEMENT("/facility", "fas fa-building", MenuCategory.SETTINGS);
 
   String url;
 
