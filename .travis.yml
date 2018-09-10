@@ -10,5 +10,6 @@ install:
 
 script:
   - gradle build | exit 0
-  - cat file:///home/travis/build/kkojaeh/pico-erp-facility/facility-test/build/reports/tests/test/index.html
+  - cat /home/travis/build/kkojaeh/pico-erp-facility/facility-test/build/reports/tests/test/classes/pico.erp.facility.FacilityQuerySpec.html
+  - cat /home/travis/build/kkojaeh/pico-erp-facility/facility-test/build/reports/tests/test/classes/pico.erp.facility.FacilityServiceSpec.html
 
