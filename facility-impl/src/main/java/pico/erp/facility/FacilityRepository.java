@@ -1,10 +1,9 @@
-package pico.erp.facility.core;
+package pico.erp.facility;
 
 import java.util.Optional;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Repository;
 import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.domain.Facility;
 
 @Repository
 public interface FacilityRepository {

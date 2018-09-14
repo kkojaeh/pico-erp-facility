@@ -1,4 +1,4 @@
-package pico.erp.facility.domain;
+package pico.erp.facility;
 
 import java.util.Collection;
 import javax.validation.Valid;
@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.Value;
-import pico.erp.facility.data.FacilityCategory;
+import pico.erp.facility.category.data.FacilityCategory;
 import pico.erp.facility.data.FacilityId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.event.Event;

@@ -1,10 +1,9 @@
 package pico.erp.facility;
 
-import java.time.LocalDate;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import pico.erp.facility.data.FacilityCategory;
-import pico.erp.facility.data.FacilityCategoryId;
+import pico.erp.facility.category.data.FacilityCategory;
+import pico.erp.facility.category.data.FacilityCategoryId;
 import pico.erp.facility.data.FacilityData;
 import pico.erp.facility.data.FacilityId;
 

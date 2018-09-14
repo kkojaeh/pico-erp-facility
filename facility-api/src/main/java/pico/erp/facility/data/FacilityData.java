@@ -1,13 +1,12 @@
 package pico.erp.facility.data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
 import javax.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
+import pico.erp.facility.category.data.FacilityCategoryId;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)

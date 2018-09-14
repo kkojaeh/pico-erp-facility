@@ -1,4 +1,4 @@
-package pico.erp.facility.process;
+package pico.erp.facility.process.type;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Transactional
-import pico.erp.facility.data.FacilityCategoryId
+import pico.erp.facility.category.data.FacilityCategoryId
 import pico.erp.facility.data.FacilityId
 import pico.erp.facility.data.FacilityView
 import pico.erp.shared.IntegrationConfiguration

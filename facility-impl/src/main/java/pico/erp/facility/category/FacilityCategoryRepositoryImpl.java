@@ -1,4 +1,4 @@
-package pico.erp.facility.impl;
+package pico.erp.facility.category;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,9 +7,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
-import pico.erp.facility.core.FacilityCategoryRepository;
-import pico.erp.facility.data.FacilityCategory;
-import pico.erp.facility.data.FacilityCategoryId;
+import pico.erp.facility.category.data.FacilityCategory;
+import pico.erp.facility.category.data.FacilityCategoryId;
 
 @Repository
 public class FacilityCategoryRepositoryImpl implements FacilityCategoryRepository {

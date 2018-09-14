@@ -1,4 +1,4 @@
-package pico.erp.facility.core;
+package pico.erp.facility;
 
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,14 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pico.erp.audit.AuditService;
-import pico.erp.facility.FacilityExceptions;
-import pico.erp.facility.FacilityRequests;
-import pico.erp.facility.FacilityService;
-import pico.erp.facility.data.FacilityCategory;
-import pico.erp.facility.data.FacilityCategoryId;
+import pico.erp.facility.category.FacilityCategoryRepository;
+import pico.erp.facility.category.data.FacilityCategory;
+import pico.erp.facility.category.data.FacilityCategoryId;
 import pico.erp.facility.data.FacilityData;
 import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.domain.Facility;
 import pico.erp.shared.Public;
 import pico.erp.shared.event.EventPublisher;
 

@@ -1,13 +1,14 @@
-package pico.erp.facility.process.data;
+package pico.erp.facility.process.type.data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import pico.erp.facility.data.FacilityCategoryId;
 import pico.erp.facility.data.FacilityId;
+import pico.erp.process.type.data.ProcessTypeId;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -17,10 +18,14 @@ public class FacilityProcessTypeData implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
-  FacilityId id;
+  FacilityProcessTypeId id;
 
-  String name;
+  FacilityId facilityId;
 
-  FacilityCategoryId categoryId;
+  ProcessTypeId processTypeId;
+
+  BigDecimal speedVariationPrate;
+
+  BigDecimal defectiveVariationPrate;
 
 }

@@ -1,18 +1,15 @@
-package pico.erp.facility.process;
+package pico.erp.facility.process.type;
 
 import java.math.BigDecimal;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pico.erp.facility.data.FacilityCategoryId;
 import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.process.data.FacilityProcessTypeId;
-import pico.erp.process.data.ProcessTypeId;
-import pico.erp.shared.TypeDefinitions;
+import pico.erp.facility.process.type.data.FacilityProcessTypeId;
+import pico.erp.process.type.data.ProcessTypeId;
 
 public interface FacilityProcessTypeRequests {
 
@@ -67,6 +64,6 @@ public interface FacilityProcessTypeRequests {
 
     @Valid
     @NotNull
-    FacilityId id;
+    FacilityProcessTypeId id;
   }
 }

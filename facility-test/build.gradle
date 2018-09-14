@@ -9,8 +9,12 @@ dependencies {
 
   compile project(':facility-impl')
 
+  testRuntimeOnly("com.github.kkojaeh.pico-erp-item:item-test:${itemVersion}")
+
   testRuntimeOnly("com.github.kkojaeh.pico-erp-audit:audit-test:${auditVersion}")
 
   testRuntimeOnly("com.github.kkojaeh.pico-erp-process:process-test:${processVersion}")
+
+  testRuntimeOnly("com.github.kkojaeh.pico-erp-company:company-test:${companyVersion}")
 
 }

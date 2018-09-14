@@ -1,4 +1,4 @@
-package pico.erp.facility.impl;
+package pico.erp.facility.jpa;
 
 import java.util.Optional;
 import lombok.val;
@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pico.erp.facility.core.FacilityRepository;
+import pico.erp.facility.Facility;
+import pico.erp.facility.FacilityRepository;
 import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.domain.Facility;
-import pico.erp.facility.impl.jpa.FacilityEntity;
 
 @Repository
 interface FacilityEntityRepository extends CrudRepository<FacilityEntity, FacilityId> {

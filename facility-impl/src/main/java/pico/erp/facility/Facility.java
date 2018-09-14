@@ -1,4 +1,4 @@
-package pico.erp.facility.domain;
+package pico.erp.facility;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -11,8 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import pico.erp.audit.annotation.Audit;
-import pico.erp.facility.FacilityEvents;
-import pico.erp.facility.data.FacilityCategory;
+import pico.erp.facility.category.data.FacilityCategory;
 import pico.erp.facility.data.FacilityId;
 
 @Builder(toBuilder = true)
