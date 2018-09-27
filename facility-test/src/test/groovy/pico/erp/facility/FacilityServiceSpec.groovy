@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 import pico.erp.facility.category.data.FacilityCategoryId
 import pico.erp.facility.data.FacilityId
 import pico.erp.shared.IntegrationConfiguration
+import pico.erp.work.schedule.category.data.WorkScheduleCategoryId
 import spock.lang.Specification
 
 @SpringBootTest(classes = [IntegrationConfiguration])
@@ -29,7 +30,8 @@ class FacilityServiceSpec extends Specification {
     facilityService.create(new FacilityRequests.CreateRequest(
       id: facilityId,
       name: "포장 11 라인",
-      categoryId: FacilityCategoryId.from("packaging")
+      categoryId: FacilityCategoryId.from("packaging"),
+      workScheduleCategoryId: WorkScheduleCategoryId.from("global")
     ))
   }
 

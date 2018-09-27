@@ -15,6 +15,7 @@ import pico.erp.facility.process.type.FacilityProcessTypeService
 import pico.erp.facility.process.type.data.FacilityProcessTypeId
 import pico.erp.process.type.data.ProcessTypeId
 import pico.erp.shared.IntegrationConfiguration
+import pico.erp.work.schedule.category.data.WorkScheduleCategoryId
 import spock.lang.Specification
 
 @SpringBootTest(classes = [IntegrationConfiguration])
@@ -41,7 +42,8 @@ class FacilityProcessTypeServiceSpec extends Specification {
     facilityService.create(new FacilityRequests.CreateRequest(
       id: facilityId,
       name: "포장 11 라인",
-      categoryId: FacilityCategoryId.from("packaging")
+      categoryId: FacilityCategoryId.from("packaging"),
+      workScheduleCategoryId: WorkScheduleCategoryId.from("global")
     ))
     facilityProcessTypeService.create(new FacilityProcessTypeRequests.CreateRequest(
       id: facilityProcessTypeId,
