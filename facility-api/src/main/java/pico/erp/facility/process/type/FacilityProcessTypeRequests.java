@@ -32,10 +32,10 @@ public interface FacilityProcessTypeRequests {
     ProcessTypeId processTypeId;
 
     @NotNull
-    BigDecimal speedVariationPrate;
+    BigDecimal speedVariationRate;
 
     @NotNull
-    BigDecimal defectiveVariationPrate;
+    BigDecimal defectiveVariationRate;
 
   }
 
@@ -50,10 +50,10 @@ public interface FacilityProcessTypeRequests {
     FacilityProcessTypeId id;
 
     @NotNull
-    BigDecimal speedVariationPrate;
+    BigDecimal speedVariationRate;
 
     @NotNull
-    BigDecimal defectiveVariationPrate;
+    BigDecimal defectiveVariationRate;
 
   }
 

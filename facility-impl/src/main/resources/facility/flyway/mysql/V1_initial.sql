@@ -17,12 +17,12 @@ create table fct_facility_process_type (
 	created_by_id varchar(50),
 	created_by_name varchar(50),
 	created_date datetime,
-	defective_variation_prate decimal(7,5),
+	defective_variation_rate decimal(7,5),
 	last_modified_by_id varchar(50),
 	last_modified_by_name varchar(50),
 	last_modified_date datetime,
 	process_type_id varchar(255),
-	speed_variation_prate decimal(7,5),
+	speed_variation_rate decimal(7,5),
 	facility_id varchar(255),
 	primary key (id)
 ) engine=InnoDB;

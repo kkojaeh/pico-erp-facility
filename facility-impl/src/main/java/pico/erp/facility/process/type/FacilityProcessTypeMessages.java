@@ -27,10 +27,10 @@ public interface FacilityProcessTypeMessages {
     ProcessTypeData processTypeData;
 
     @NotNull
-    BigDecimal speedVariationPrate;
+    BigDecimal speedVariationRate;
 
     @NotNull
-    BigDecimal defectiveVariationPrate;
+    BigDecimal defectiveVariationRate;
 
   }
 
@@ -38,10 +38,10 @@ public interface FacilityProcessTypeMessages {
   class UpdateRequest {
 
     @NotNull
-    BigDecimal speedVariationPrate;
+    BigDecimal speedVariationRate;
 
     @NotNull
-    BigDecimal defectiveVariationPrate;
+    BigDecimal defectiveVariationRate;
 
   }
 

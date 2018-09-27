@@ -49,8 +49,8 @@ class FacilityProcessTypeServiceSpec extends Specification {
       id: facilityProcessTypeId,
       facilityId: facilityId,
       processTypeId: processTypeId,
-      speedVariationPrate: 0,
-      defectiveVariationPrate: 0
+      speedVariationRate: 0,
+      defectiveVariationRate: 0
     ))
   }
 
@@ -101,8 +101,8 @@ class FacilityProcessTypeServiceSpec extends Specification {
       id: facilityProcessTypeId,
       facilityId: facilityId,
       processTypeId: processTypeId,
-      speedVariationPrate: 0,
-      defectiveVariationPrate: 0
+      speedVariationRate: 0,
+      defectiveVariationRate: 0
     ))
 
     then:

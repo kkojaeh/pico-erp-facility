@@ -96,8 +96,8 @@ public abstract class JpaMapper {
       .id(entity.getId())
       .facility(map(entity.getFacility()))
       .processTypeData(map(entity.getProcessTypeId()))
-      .speedVariationPrate(entity.getSpeedVariationPrate())
-      .defectiveVariationPrate(entity.getDefectiveVariationPrate())
+      .speedVariationRate(entity.getSpeedVariationRate())
+      .defectiveVariationRate(entity.getDefectiveVariationRate())
       .build();
   }
 

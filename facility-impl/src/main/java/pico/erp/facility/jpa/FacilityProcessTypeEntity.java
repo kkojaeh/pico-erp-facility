@@ -65,10 +65,10 @@ public class FacilityProcessTypeEntity implements Serializable {
   ProcessTypeId processTypeId;
 
   @Column(precision = 7, scale = 5)
-  BigDecimal speedVariationPrate;
+  BigDecimal speedVariationRate;
 
   @Column(precision = 7, scale = 5)
-  BigDecimal defectiveVariationPrate;
+  BigDecimal defectiveVariationRate;
 
   @Embedded
   @AttributeOverrides({

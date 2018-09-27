@@ -24,8 +24,8 @@ public class FacilityProcessTypeData implements Serializable {
 
   ProcessTypeId processTypeId;
 
-  BigDecimal speedVariationPrate;
+  BigDecimal speedVariationRate;
 
-  BigDecimal defectiveVariationPrate;
+  BigDecimal defectiveVariationRate;
 
 }

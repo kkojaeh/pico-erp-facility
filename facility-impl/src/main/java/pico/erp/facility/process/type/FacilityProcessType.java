@@ -34,25 +34,25 @@ public class FacilityProcessType implements Serializable {
 
   ProcessTypeData processTypeData;
 
-  BigDecimal speedVariationPrate;
+  BigDecimal speedVariationRate;
 
-  BigDecimal defectiveVariationPrate;
+  BigDecimal defectiveVariationRate;
 
   public FacilityProcessTypeMessages.CreateResponse apply(
     FacilityProcessTypeMessages.CreateRequest request) {
     id = request.getId();
     facility = request.getFacility();
     processTypeData = request.getProcessTypeData();
-    speedVariationPrate = request.getSpeedVariationPrate();
-    defectiveVariationPrate = request.getDefectiveVariationPrate();
+    speedVariationRate = request.getSpeedVariationRate();
+    defectiveVariationRate = request.getDefectiveVariationRate();
     return new FacilityProcessTypeMessages.CreateResponse(
       Arrays.asList(new FacilityProcessTypeEvents.CreatedEvent(this.id)));
   }
 
   public FacilityProcessTypeMessages.UpdateResponse apply(
     FacilityProcessTypeMessages.UpdateRequest request) {
-    speedVariationPrate = request.getSpeedVariationPrate();
-    defectiveVariationPrate = request.getDefectiveVariationPrate();
+    speedVariationRate = request.getSpeedVariationRate();
+    defectiveVariationRate = request.getDefectiveVariationRate();
     return new FacilityProcessTypeMessages.UpdateResponse(
       Arrays.asList(new FacilityProcessTypeEvents.UpdatedEvent(this.id)));
   }
