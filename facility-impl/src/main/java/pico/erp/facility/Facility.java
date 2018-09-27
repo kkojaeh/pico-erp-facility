@@ -13,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.category.data.FacilityCategory;
 import pico.erp.facility.data.FacilityId;
+import pico.erp.work.schedule.category.data.WorkScheduleCategory;
 
 @Builder(toBuilder = true)
 @Getter
@@ -32,10 +33,13 @@ public class Facility implements Serializable {
 
   String name;
 
+  WorkScheduleCategory workScheduleCategory;
+
   public FacilityMessages.CreateResponse apply(FacilityMessages.CreateRequest request) {
     id = request.getId();
     category = request.getCategory();
     name = request.getName();
+    workScheduleCategory = request.getWorkScheduleCategory();
     return new FacilityMessages.CreateResponse(
       Arrays.asList(new FacilityEvents.CreatedEvent(this.id)));
   }
@@ -43,6 +47,7 @@ public class Facility implements Serializable {
   public FacilityMessages.UpdateResponse apply(FacilityMessages.UpdateRequest request) {
     category = request.getCategory();
     name = request.getName();
+    workScheduleCategory = request.getWorkScheduleCategory();
     return new FacilityMessages.UpdateResponse(
       Arrays.asList(new FacilityEvents.UpdatedEvent(this.id)));
   }

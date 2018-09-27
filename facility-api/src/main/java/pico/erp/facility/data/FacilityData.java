@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import pico.erp.facility.category.data.FacilityCategoryId;
+import pico.erp.work.schedule.category.data.WorkScheduleCategoryId;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -21,5 +22,7 @@ public class FacilityData implements Serializable {
   String name;
 
   FacilityCategoryId categoryId;
+
+  WorkScheduleCategoryId workScheduleCategoryId;
 
 }

@@ -1,6 +1,7 @@
 package pico.erp.facility.jpa;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 import javax.validation.constraints.NotNull;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ interface FacilityProcessTypeEntityRepository extends
   @Query("SELECT CASE WHEN COUNT(fpt) > 0 THEN true ELSE false END FROM FacilityProcessType fpt WHERE fpt.facility.id = :facilityId AND fpt.processTypeId = :processTypeId")
   boolean exists(@Param("facilityId") FacilityId facilityId,
     @Param("processTypeId") ProcessTypeId processTypeId);
+
+  @Query("SELECT fpt FROM FacilityProcessType fpt WHERE fpt.facility.id = :facilityId")
+  Stream<FacilityProcessTypeEntity> findAllBy(@Param("facilityId") FacilityId facilityId);
 }
 
 @Repository
@@ -59,6 +63,12 @@ public class FacilityProcessTypeRepositoryJpa implements FacilityProcessTypeRepo
   @Override
   public Optional<FacilityProcessType> findBy(@NotNull FacilityProcessTypeId id) {
     return Optional.ofNullable(repository.findOne(id))
+      .map(mapper::map);
+  }
+
+  @Override
+  public Stream<FacilityProcessType> findAllBy(@NotNull FacilityId facilityId) {
+    return repository.findAllBy(facilityId)
       .map(mapper::map);
   }
 

@@ -33,7 +33,7 @@ class FacilityServiceSpec extends Specification {
     ))
   }
 
-  def "아이디로 존재하는 작업일 확인"() {
+  def "아이디로 존재하는 설비 확인"() {
     when:
     def exists = facilityService.exists(facilityId)
 
@@ -41,7 +41,7 @@ class FacilityServiceSpec extends Specification {
     exists == true
   }
 
-  def "아이디로 존재하지 않는 작업일 확인"() {
+  def "아이디로 존재하지 않는 설비 확인"() {
     when:
     def exists = facilityService.exists(FacilityId.from("packaging-00"))
 
@@ -49,16 +49,16 @@ class FacilityServiceSpec extends Specification {
     exists == false
   }
 
-  def "아이디로 존재하는 작업일를 조회"() {
+  def "아이디로 존재하는 설비를 조회"() {
     when:
-    def workDay = facilityService.get(facilityId)
+    def facility = facilityService.get(facilityId)
 
     then:
-    workDay.name == "포장 11 라인"
-    workDay.categoryId == FacilityCategoryId.from("packaging")
+    facility.name == "포장 11 라인"
+    facility.categoryId == FacilityCategoryId.from("packaging")
   }
 
-  def "아이디로 존재하지 않는 작업일을 조회"() {
+  def "아이디로 존재하지 않는 설비을 조회"() {
     when:
     facilityService.get(FacilityId.from("packaging-00"))
 

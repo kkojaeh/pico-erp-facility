@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import pico.erp.facility.category.data.FacilityCategoryId;
 import pico.erp.facility.data.FacilityId;
 import pico.erp.shared.TypeDefinitions;
+import pico.erp.work.schedule.category.data.WorkScheduleCategoryId;
 
 public interface FacilityRequests {
 
@@ -30,6 +31,10 @@ public interface FacilityRequests {
     @Size(max = TypeDefinitions.NAME_LENGTH)
     String name;
 
+    @Valid
+    @NotNull
+    WorkScheduleCategoryId workScheduleCategoryId;
+
   }
 
   @Data
@@ -48,6 +53,10 @@ public interface FacilityRequests {
 
     @Size(max = TypeDefinitions.NAME_LENGTH)
     String name;
+
+    @Valid
+    @NotNull
+    WorkScheduleCategoryId workScheduleCategoryId;
 
   }
 

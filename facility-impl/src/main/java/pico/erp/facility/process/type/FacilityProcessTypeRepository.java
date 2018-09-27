@@ -1,6 +1,7 @@
 package pico.erp.facility.process.type;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Repository;
 import pico.erp.facility.data.FacilityId;
@@ -19,6 +20,8 @@ public interface FacilityProcessTypeRepository {
   boolean exists(@NotNull FacilityId facilityId, @NotNull ProcessTypeId processTypeId);
 
   Optional<FacilityProcessType> findBy(@NotNull FacilityProcessTypeId id);
+
+  Stream<FacilityProcessType> findAllBy(@NotNull FacilityId facilityId);
 
   void update(@NotNull FacilityProcessType facilityProcessType);
 

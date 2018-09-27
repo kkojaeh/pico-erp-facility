@@ -13,5 +13,7 @@ dependencies {
 
   compile("com.github.kkojaeh.pico-erp-process:process-api:${processVersion}")
 
+  compile("com.github.kkojaeh.pico-erp-work-schedule:work-schedule-api:${workScheduleVersion}")
+
 }
 

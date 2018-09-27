@@ -10,6 +10,7 @@ import pico.erp.facility.category.data.FacilityCategory;
 import pico.erp.facility.data.FacilityId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.event.Event;
+import pico.erp.work.schedule.category.data.WorkScheduleCategory;
 
 public interface FacilityMessages {
 
@@ -26,6 +27,8 @@ public interface FacilityMessages {
     @Size(max = TypeDefinitions.NAME_LENGTH)
     String name;
 
+    WorkScheduleCategory workScheduleCategory;
+
   }
 
   @Data
@@ -36,6 +39,8 @@ public interface FacilityMessages {
 
     @Size(max = TypeDefinitions.NAME_LENGTH)
     String name;
+
+    WorkScheduleCategory workScheduleCategory;
 
   }
 

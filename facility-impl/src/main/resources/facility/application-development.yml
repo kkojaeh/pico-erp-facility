@@ -12,7 +12,7 @@ spring:
 
 flyway:
   enabled: true
-  locations: classpath:work-day/flyway/{vendor}
-  table: flyway_schema_history_work_day
+  locations: classpath:facility/flyway/{vendor}
+  table: flyway_schema_history_facility
   encoding: UTF-8
   baseline-on-migrate: true

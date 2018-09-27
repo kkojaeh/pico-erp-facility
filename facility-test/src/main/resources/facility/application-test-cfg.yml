@@ -3,12 +3,16 @@ data:
     - id: press-molding-1
       category-id: press-molding
       name: 압착성형 1 라인
+      work-schedule-category-id: global
     - id: press-molding-2
       category-id: press-molding
       name: 압착성형 2 라인
+      work-schedule-category-id: global
     - id: packaging-1
       category-id: packaging
       name: 포장 1 라인
+      work-schedule-category-id: global
     - id: packaging-2
       category-id: packaging
       name: 포장 2 라인
+      work-schedule-category-id: global

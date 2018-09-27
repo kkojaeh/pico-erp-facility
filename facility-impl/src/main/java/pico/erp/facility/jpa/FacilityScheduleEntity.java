@@ -10,6 +10,9 @@ import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,14 +27,15 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import pico.erp.facility.category.data.FacilityCategoryId;
-import pico.erp.facility.data.FacilityId;
+import pico.erp.facility.schedule.data.FacilityScheduleId;
+import pico.erp.process.data.ProcessId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.data.Auditor;
-import pico.erp.work.schedule.category.data.WorkScheduleCategoryId;
 
-@Entity(name = "Facility")
-@Table(name = "FCT_FACILITY")
+@Entity(name = "FacilitySchedule")
+@Table(name = "FCT_FACILITY_SCHEDULE", indexes = {
+  @Index(name = "FCT_FACILITY_SCHEDULE_FACILITY_ID_IDX", columnList = "FACILITY_ID")
+})
 @Data
 @EqualsAndHashCode(of = "id")
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -40,7 +44,7 @@ import pico.erp.work.schedule.category.data.WorkScheduleCategoryId;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FacilityEntity implements Serializable {
+public class FacilityScheduleEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -48,20 +52,26 @@ public class FacilityEntity implements Serializable {
   @AttributeOverrides({
     @AttributeOverride(name = "value", column = @Column(name = "ID"))
   })
-  FacilityId id;
+  FacilityScheduleId id;
+
+  @ManyToOne
+  @JoinColumn(name = "FACILITY_ID")
+  FacilityEntity facility;
 
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "CATEGORY_ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "PROCESS_ID"))
   })
-  FacilityCategoryId categoryId;
+  ProcessId processId;
 
-  @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "WORK_SCHEDULE_CATEGORY_ID"))
-  })
-  WorkScheduleCategoryId workScheduleCategoryId;
+  @Column(name = "BEGIN_DATE_TIME")
+  OffsetDateTime begin;
 
-  @Column(length = TypeDefinitions.NAME_LENGTH)
-  String name;
+  @Column(name = "END_DATE_TIME")
+  OffsetDateTime end;
+
+  long durationMinutes;
+
+  boolean flexible;
 
   @Embedded
   @AttributeOverrides({
