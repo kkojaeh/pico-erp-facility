@@ -1,5 +1,8 @@
 package pico.erp.facility.process.type;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.validation.constraints.NotNull;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -8,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pico.erp.audit.AuditService;
 import pico.erp.facility.Mapper;
+import pico.erp.facility.data.FacilityId;
 import pico.erp.facility.process.type.data.FacilityProcessTypeData;
 import pico.erp.facility.process.type.data.FacilityProcessTypeId;
 import pico.erp.shared.Public;
@@ -79,6 +83,13 @@ public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeServi
     facilityProcessTypeRepository.update(facility);
     auditService.commit(facility);
     eventPublisher.publishEvents(response.getEvents());
+  }
+
+  @Override
+  public List<FacilityProcessTypeData> getAll(@NotNull FacilityId facilityId) {
+    return facilityProcessTypeRepository.findAllBy(facilityId)
+      .map(mapper::map)
+      .collect(Collectors.toList());
   }
 
 }

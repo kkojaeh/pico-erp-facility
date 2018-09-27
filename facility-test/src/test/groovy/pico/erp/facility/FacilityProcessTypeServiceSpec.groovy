@@ -54,6 +54,14 @@ class FacilityProcessTypeServiceSpec extends Specification {
     ))
   }
 
+  def "설비 아이디로 전체 설비공정유형 확인"() {
+    when:
+    def all = facilityProcessTypeService.getAll(facilityId)
+
+    then:
+    all.size() == 1
+  }
+
   def "아이디로 존재하는 설비공정유형 확인"() {
     when:
     def exists = facilityProcessTypeService.exists(facilityProcessTypeId)

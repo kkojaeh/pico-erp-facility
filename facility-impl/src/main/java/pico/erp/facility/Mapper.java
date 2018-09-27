@@ -123,7 +123,8 @@ public abstract class Mapper {
   }
 
   @Mappings({
-    @Mapping(target = "categoryId", source = "category.id")
+    @Mapping(target = "categoryId", source = "category.id"),
+    @Mapping(target = "workScheduleCategoryId", source = "workScheduleCategory.id")
   })
   public abstract FacilityData map(Facility facility);
 
@@ -182,12 +183,15 @@ public abstract class Mapper {
 
   @Mappings({
     @Mapping(target = "facility", source = "facilityId"),
-    @Mapping(target = "process", source = "processId")
+    @Mapping(target = "process", source = "processId"),
+    @Mapping(target = "facilityProcessTypes", ignore = true),
+    @Mapping(target = "end", ignore = true)
   })
   public abstract FacilityScheduleMessages.CreateRequest map(
     FacilityScheduleRequests.CreateRequest request);
 
   @Mappings({
+    @Mapping(target = "end", ignore = true)
   })
   public abstract FacilityScheduleMessages.UpdateRequest map(
     FacilityScheduleRequests.UpdateRequest request);

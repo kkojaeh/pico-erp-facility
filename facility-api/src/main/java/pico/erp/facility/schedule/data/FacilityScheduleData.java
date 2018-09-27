@@ -1,7 +1,6 @@
 package pico.erp.facility.schedule.data;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import javax.persistence.Id;
 import lombok.AccessLevel;
@@ -29,7 +28,7 @@ public class FacilityScheduleData implements Serializable {
 
   OffsetDateTime end;
 
-  BigDecimal durationHours;
+  long durationMinutes;
 
   boolean flexible;
 
