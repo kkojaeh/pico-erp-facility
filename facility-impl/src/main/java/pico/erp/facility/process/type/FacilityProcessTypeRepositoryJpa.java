@@ -1,4 +1,4 @@
-package pico.erp.facility.jpa;
+package pico.erp.facility.process.type;
 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -10,10 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.process.type.FacilityProcessType;
-import pico.erp.facility.process.type.FacilityProcessTypeRepository;
-import pico.erp.facility.process.type.data.FacilityProcessTypeId;
+import pico.erp.facility.FacilityId;
 import pico.erp.process.type.ProcessTypeId;
 
 @Repository
@@ -36,13 +33,13 @@ public class FacilityProcessTypeRepositoryJpa implements FacilityProcessTypeRepo
   private FacilityProcessTypeEntityRepository repository;
 
   @Autowired
-  private JpaMapper mapper;
+  private FacilityProcessTypeMapper mapper;
 
   @Override
   public FacilityProcessType create(@NotNull FacilityProcessType facilityProcessType) {
-    val entity = mapper.map(facilityProcessType);
+    val entity = mapper.jpa(facilityProcessType);
     val created = repository.save(entity);
-    return mapper.map(created);
+    return mapper.jpa(created);
   }
 
   @Override
@@ -61,21 +58,21 @@ public class FacilityProcessTypeRepositoryJpa implements FacilityProcessTypeRepo
   }
 
   @Override
-  public Optional<FacilityProcessType> findBy(@NotNull FacilityProcessTypeId id) {
-    return Optional.ofNullable(repository.findOne(id))
-      .map(mapper::map);
+  public Stream<FacilityProcessType> findAllBy(@NotNull FacilityId facilityId) {
+    return repository.findAllBy(facilityId)
+      .map(mapper::jpa);
   }
 
   @Override
-  public Stream<FacilityProcessType> findAllBy(@NotNull FacilityId facilityId) {
-    return repository.findAllBy(facilityId)
-      .map(mapper::map);
+  public Optional<FacilityProcessType> findBy(@NotNull FacilityProcessTypeId id) {
+    return Optional.ofNullable(repository.findOne(id))
+      .map(mapper::jpa);
   }
 
   @Override
   public void update(@NotNull FacilityProcessType facilityProcessType) {
     val entity = repository.findOne(facilityProcessType.getId());
-    mapper.pass(mapper.map(facilityProcessType), entity);
+    mapper.pass(mapper.jpa(facilityProcessType), entity);
     repository.save(entity);
   }
 

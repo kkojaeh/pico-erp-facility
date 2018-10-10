@@ -1,4 +1,4 @@
-package pico.erp.facility.jpa;
+package pico.erp.facility.schedule;
 
 import java.util.Optional;
 import lombok.val;
@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pico.erp.facility.schedule.FacilitySchedule;
-import pico.erp.facility.schedule.FacilityScheduleRepository;
-import pico.erp.facility.schedule.data.FacilityScheduleId;
 
 @Repository
 interface FacilityScheduleEntityRepository extends
@@ -24,14 +21,14 @@ public class FacilityScheduleRepositoryJpa implements FacilityScheduleRepository
   private FacilityScheduleEntityRepository repository;
 
   @Autowired
-  private JpaMapper mapper;
+  private FacilityScheduleMapper mapper;
 
 
   @Override
   public FacilitySchedule create(FacilitySchedule facilitySchedule) {
-    val entity = mapper.map(facilitySchedule);
+    val entity = mapper.jpa(facilitySchedule);
     val created = repository.save(entity);
-    return mapper.map(created);
+    return mapper.jpa(created);
   }
 
   @Override
@@ -47,13 +44,13 @@ public class FacilityScheduleRepositoryJpa implements FacilityScheduleRepository
   @Override
   public Optional<FacilitySchedule> findBy(FacilityScheduleId id) {
     return Optional.ofNullable(repository.findOne(id))
-      .map(mapper::map);
+      .map(mapper::jpa);
   }
 
   @Override
   public void update(FacilitySchedule facilitySchedule) {
     val entity = repository.findOne(facilitySchedule.getId());
-    mapper.pass(mapper.map(facilitySchedule), entity);
+    mapper.pass(mapper.jpa(facilitySchedule), entity);
     repository.save(entity);
   }
 }

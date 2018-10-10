@@ -4,8 +4,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Repository;
-import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.process.type.data.FacilityProcessTypeId;
+import pico.erp.facility.FacilityId;
 import pico.erp.process.type.ProcessTypeId;
 
 @Repository

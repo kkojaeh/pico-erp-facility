@@ -1,4 +1,4 @@
-package pico.erp.facility.data;
+package pico.erp.facility;
 
 import java.io.Serializable;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import pico.erp.facility.category.data.FacilityCategoryId;
+import pico.erp.facility.category.FacilityCategoryId;
 import pico.erp.work.schedule.category.WorkScheduleCategoryId;
 
 @Data

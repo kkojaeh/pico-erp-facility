@@ -3,7 +3,6 @@ package pico.erp.facility.process.type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pico.erp.facility.process.type.data.FacilityProcessTypeId;
 import pico.erp.shared.event.Event;
 
 public interface FacilityProcessTypeEvents {

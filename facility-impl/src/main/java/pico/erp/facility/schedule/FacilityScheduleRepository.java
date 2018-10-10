@@ -3,7 +3,6 @@ package pico.erp.facility.schedule;
 import java.util.Optional;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Repository;
-import pico.erp.facility.schedule.data.FacilityScheduleId;
 
 @Repository
 public interface FacilityScheduleRepository {

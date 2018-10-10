@@ -1,4 +1,4 @@
-package pico.erp.facility.process.type.data;
+package pico.erp.facility.process.type;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -7,7 +7,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import pico.erp.facility.data.FacilityId;
+import pico.erp.facility.FacilityId;
 import pico.erp.process.type.ProcessTypeId;
 
 @Data

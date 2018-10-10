@@ -2,10 +2,8 @@ package pico.erp.facility;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import pico.erp.facility.category.data.FacilityCategory;
-import pico.erp.facility.category.data.FacilityCategoryId;
-import pico.erp.facility.data.FacilityData;
-import pico.erp.facility.data.FacilityId;
+import pico.erp.facility.category.FacilityCategory;
+import pico.erp.facility.category.FacilityCategoryId;
 
 public interface FacilityService {
 

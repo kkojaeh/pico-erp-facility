@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Value;
 import pico.erp.facility.Facility;
-import pico.erp.facility.process.type.data.FacilityProcessTypeId;
 import pico.erp.process.type.ProcessTypeData;
 import pico.erp.shared.event.Event;
 

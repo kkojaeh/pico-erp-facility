@@ -7,8 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pico.erp.facility.category.data.FacilityCategoryId;
-import pico.erp.facility.data.FacilityId;
+import pico.erp.facility.category.FacilityCategoryId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.work.schedule.category.WorkScheduleCategoryId;
 

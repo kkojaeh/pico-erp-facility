@@ -1,4 +1,4 @@
-package pico.erp.facility.category.data;
+package pico.erp.facility.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

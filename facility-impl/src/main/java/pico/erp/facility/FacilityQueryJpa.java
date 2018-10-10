@@ -1,4 +1,4 @@
-package pico.erp.facility.jpa;
+package pico.erp.facility;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
@@ -18,9 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import pico.erp.facility.FacilityQuery;
 import pico.erp.facility.category.FacilityCategoryRepository;
-import pico.erp.facility.data.FacilityView;
 import pico.erp.shared.ExtendedLabeledValue;
 import pico.erp.shared.Public;
 import pico.erp.shared.data.LabeledValuable;

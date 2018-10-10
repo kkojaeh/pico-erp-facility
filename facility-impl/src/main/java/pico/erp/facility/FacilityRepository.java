@@ -3,7 +3,6 @@ package pico.erp.facility;
 import java.util.Optional;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Repository;
-import pico.erp.facility.data.FacilityId;
 
 @Repository
 public interface FacilityRepository {

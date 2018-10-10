@@ -1,4 +1,4 @@
-package pico.erp.facility.process.type.data;
+package pico.erp.facility;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ import pico.erp.shared.TypeDefinitions;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "value")
 @ToString
-public class FacilityProcessTypeId implements Serializable {
+public class FacilityId implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -30,11 +30,11 @@ public class FacilityProcessTypeId implements Serializable {
   @NotNull
   private String value;
 
-  public static FacilityProcessTypeId from(@NonNull String value) {
-    return new FacilityProcessTypeId(value);
+  public static FacilityId from(@NonNull String value) {
+    return new FacilityId(value);
   }
 
-  public static FacilityProcessTypeId generate() {
+  public static FacilityId generate() {
     return from(UUID.randomUUID().toString());
   }
 

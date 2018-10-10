@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
-import pico.erp.facility.category.data.FacilityCategory;
-import pico.erp.facility.category.data.FacilityCategoryId;
 
 @Repository
 public class FacilityCategoryRepositoryImpl implements FacilityCategoryRepository {

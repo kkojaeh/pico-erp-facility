@@ -42,7 +42,7 @@ public class FacilityApplication implements ApplicationStarter {
   public AuditConfiguration auditConfiguration() {
     return AuditConfiguration.builder()
       .packageToScan("pico.erp.facility")
-      .entity(ROLE.class)
+      .entity(FacilityRoles.class)
       .build();
   }
 
@@ -64,13 +64,13 @@ public class FacilityApplication implements ApplicationStarter {
   @Bean
   @Public
   public Role facilityAccessorRole() {
-    return ROLE.FACILITY_ACCESSOR;
+    return FacilityRoles.FACILITY_ACCESSOR;
   }
 
   @Bean
   @Public
   public Role facilityManagerRole() {
-    return ROLE.FACILITY_MANAGER;
+    return FacilityRoles.FACILITY_MANAGER;
   }
 
 }

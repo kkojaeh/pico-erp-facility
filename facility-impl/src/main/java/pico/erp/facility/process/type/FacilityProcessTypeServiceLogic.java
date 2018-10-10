@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pico.erp.audit.AuditService;
-import pico.erp.facility.Mapper;
-import pico.erp.facility.data.FacilityId;
-import pico.erp.facility.process.type.data.FacilityProcessTypeData;
-import pico.erp.facility.process.type.data.FacilityProcessTypeId;
+import pico.erp.facility.FacilityId;
 import pico.erp.shared.Public;
 import pico.erp.shared.event.EventPublisher;
 
@@ -31,7 +28,7 @@ public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeServi
   private EventPublisher eventPublisher;
 
   @Autowired
-  private Mapper mapper;
+  private FacilityProcessTypeMapper mapper;
 
   @Lazy
   @Autowired

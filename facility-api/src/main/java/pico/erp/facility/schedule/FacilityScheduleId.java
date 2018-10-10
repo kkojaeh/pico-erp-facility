@@ -1,4 +1,4 @@
-package pico.erp.facility.data;
+package pico.erp.facility.schedule;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ import pico.erp.shared.TypeDefinitions;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "value")
 @ToString
-public class FacilityId implements Serializable {
+public class FacilityScheduleId implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -30,11 +30,11 @@ public class FacilityId implements Serializable {
   @NotNull
   private String value;
 
-  public static FacilityId from(@NonNull String value) {
-    return new FacilityId(value);
+  public static FacilityScheduleId from(@NonNull String value) {
+    return new FacilityScheduleId(value);
   }
 
-  public static FacilityId generate() {
+  public static FacilityScheduleId generate() {
     return from(UUID.randomUUID().toString());
   }
 

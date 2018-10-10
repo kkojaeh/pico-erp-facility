@@ -7,12 +7,11 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Transactional
-import pico.erp.facility.category.data.FacilityCategoryId
-import pico.erp.facility.data.FacilityId
+import pico.erp.facility.category.FacilityCategoryId
 import pico.erp.facility.process.type.FacilityProcessTypeExceptions
+import pico.erp.facility.process.type.FacilityProcessTypeId
 import pico.erp.facility.process.type.FacilityProcessTypeRequests
 import pico.erp.facility.process.type.FacilityProcessTypeService
-import pico.erp.facility.process.type.data.FacilityProcessTypeId
 import pico.erp.process.type.ProcessTypeId
 import pico.erp.shared.IntegrationConfiguration
 import pico.erp.work.schedule.category.WorkScheduleCategoryId

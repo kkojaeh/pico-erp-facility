@@ -14,7 +14,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.val;
 import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.Facility;
-import pico.erp.facility.schedule.data.FacilityScheduleId;
 import pico.erp.process.ProcessData;
 
 @Builder(toBuilder = true)

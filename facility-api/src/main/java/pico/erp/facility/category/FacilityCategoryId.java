@@ -1,4 +1,4 @@
-package pico.erp.facility.category.data;
+package pico.erp.facility.category;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.Serializable;

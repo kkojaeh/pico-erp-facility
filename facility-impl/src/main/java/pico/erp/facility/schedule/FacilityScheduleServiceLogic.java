@@ -8,12 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pico.erp.audit.AuditService;
-import pico.erp.facility.Mapper;
 import pico.erp.facility.schedule.FacilityScheduleRequests.CreateRequest;
 import pico.erp.facility.schedule.FacilityScheduleRequests.DeleteRequest;
 import pico.erp.facility.schedule.FacilityScheduleRequests.UpdateRequest;
-import pico.erp.facility.schedule.data.FacilityScheduleData;
-import pico.erp.facility.schedule.data.FacilityScheduleId;
 import pico.erp.shared.Public;
 import pico.erp.shared.event.EventPublisher;
 
@@ -25,7 +22,7 @@ import pico.erp.shared.event.EventPublisher;
 public class FacilityScheduleServiceLogic implements FacilityScheduleService {
 
   @Autowired
-  private Mapper mapper;
+  private FacilityScheduleMapper mapper;
 
   @Autowired
   private FacilityScheduleRepository facilityScheduleRepository;

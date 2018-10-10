@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import pico.erp.shared.data.Role;
 
 @RequiredArgsConstructor
-public enum ROLE implements Role {
+public enum FacilityRoles implements Role {
 
   FACILITY_MANAGER,
 

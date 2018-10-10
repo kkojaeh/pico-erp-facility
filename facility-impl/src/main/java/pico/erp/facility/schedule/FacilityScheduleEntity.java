@@ -1,4 +1,4 @@
-package pico.erp.facility.jpa;
+package pico.erp.facility.schedule;
 
 
 import java.io.Serializable;
@@ -27,7 +27,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import pico.erp.facility.schedule.data.FacilityScheduleId;
+import pico.erp.facility.FacilityEntity;
 import pico.erp.process.ProcessId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.data.Auditor;

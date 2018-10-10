@@ -1,4 +1,4 @@
-package pico.erp.facility.schedule.data;
+package pico.erp.facility.schedule;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -7,7 +7,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import pico.erp.facility.data.FacilityId;
+import pico.erp.facility.FacilityId;
 import pico.erp.process.ProcessId;
 
 @Data

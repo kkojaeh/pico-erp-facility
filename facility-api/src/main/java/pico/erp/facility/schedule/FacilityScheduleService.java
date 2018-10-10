@@ -2,8 +2,6 @@ package pico.erp.facility.schedule;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import pico.erp.facility.schedule.data.FacilityScheduleData;
-import pico.erp.facility.schedule.data.FacilityScheduleId;
 
 public interface FacilityScheduleService {
 

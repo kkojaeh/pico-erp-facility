@@ -1,12 +1,12 @@
-package pico.erp.facility.process.type.data;
+package pico.erp.facility.process.type;
 
 import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pico.erp.facility.category.data.FacilityCategoryId;
-import pico.erp.facility.data.FacilityId;
+import pico.erp.facility.FacilityId;
+import pico.erp.facility.category.FacilityCategoryId;
 import pico.erp.shared.data.Auditor;
 
 @AllArgsConstructor

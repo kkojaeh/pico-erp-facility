@@ -1,8 +1,7 @@
-package pico.erp.facility.jpa;
+package pico.erp.facility;
 
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -11,9 +10,6 @@ import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,15 +24,13 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import pico.erp.facility.process.type.data.FacilityProcessTypeId;
-import pico.erp.process.type.ProcessTypeId;
+import pico.erp.facility.category.FacilityCategoryId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.data.Auditor;
+import pico.erp.work.schedule.category.WorkScheduleCategoryId;
 
-@Entity(name = "FacilityProcessType")
-@Table(name = "FCT_FACILITY_PROCESS_TYPE", indexes = {
-  @Index(name = "FCT_FACILITY_PROCESS_TYPE_FACILITY_ID_PROCESS_TYPE_ID_IDX", columnList = "FACILITY_ID, PROCESS_TYPE_ID")
-})
+@Entity(name = "Facility")
+@Table(name = "FCT_FACILITY")
 @Data
 @EqualsAndHashCode(of = "id")
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -45,7 +39,7 @@ import pico.erp.shared.data.Auditor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FacilityProcessTypeEntity implements Serializable {
+public class FacilityEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -53,22 +47,20 @@ public class FacilityProcessTypeEntity implements Serializable {
   @AttributeOverrides({
     @AttributeOverride(name = "value", column = @Column(name = "ID"))
   })
-  FacilityProcessTypeId id;
-
-  @ManyToOne
-  @JoinColumn(name = "FACILITY_ID")
-  FacilityEntity facility;
+  FacilityId id;
 
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "PROCESS_TYPE_ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "CATEGORY_ID"))
   })
-  ProcessTypeId processTypeId;
+  FacilityCategoryId categoryId;
 
-  @Column(precision = 7, scale = 5)
-  BigDecimal speedVariationRate;
+  @AttributeOverrides({
+    @AttributeOverride(name = "value", column = @Column(name = "WORK_SCHEDULE_CATEGORY_ID"))
+  })
+  WorkScheduleCategoryId workScheduleCategoryId;
 
-  @Column(precision = 7, scale = 5)
-  BigDecimal defectiveVariationRate;
+  @Column(length = TypeDefinitions.NAME_LENGTH)
+  String name;
 
   @Embedded
   @AttributeOverrides({
