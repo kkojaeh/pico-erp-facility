@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.category.data.FacilityCategory;
 import pico.erp.facility.data.FacilityId;
-import pico.erp.work.schedule.category.data.WorkScheduleCategory;
+import pico.erp.work.schedule.category.WorkScheduleCategory;
 
 @Builder(toBuilder = true)
 @Getter

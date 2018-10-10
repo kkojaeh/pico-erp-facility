@@ -10,7 +10,7 @@ import pico.erp.facility.category.data.FacilityCategory;
 import pico.erp.facility.data.FacilityId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.event.Event;
-import pico.erp.work.schedule.category.data.WorkScheduleCategory;
+import pico.erp.work.schedule.category.WorkScheduleCategory;
 
 public interface FacilityMessages {
 

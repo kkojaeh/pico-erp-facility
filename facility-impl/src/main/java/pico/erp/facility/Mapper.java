@@ -24,16 +24,16 @@ import pico.erp.facility.schedule.FacilityScheduleMessages;
 import pico.erp.facility.schedule.FacilityScheduleRepository;
 import pico.erp.facility.schedule.FacilityScheduleRequests;
 import pico.erp.facility.schedule.data.FacilityScheduleData;
+import pico.erp.process.ProcessData;
+import pico.erp.process.ProcessId;
 import pico.erp.process.ProcessService;
-import pico.erp.process.data.ProcessData;
-import pico.erp.process.data.ProcessId;
+import pico.erp.process.type.ProcessTypeData;
+import pico.erp.process.type.ProcessTypeId;
 import pico.erp.process.type.ProcessTypeService;
-import pico.erp.process.type.data.ProcessTypeData;
-import pico.erp.process.type.data.ProcessTypeId;
 import pico.erp.work.schedule.WorkScheduleRequests;
 import pico.erp.work.schedule.WorkScheduleService;
-import pico.erp.work.schedule.category.data.WorkScheduleCategory;
-import pico.erp.work.schedule.category.data.WorkScheduleCategoryId;
+import pico.erp.work.schedule.category.WorkScheduleCategory;
+import pico.erp.work.schedule.category.WorkScheduleCategoryId;
 
 @org.mapstruct.Mapper
 public abstract class Mapper {

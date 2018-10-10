@@ -16,10 +16,10 @@ import pico.erp.facility.schedule.FacilityScheduleExceptions
 import pico.erp.facility.schedule.FacilityScheduleRequests
 import pico.erp.facility.schedule.FacilityScheduleService
 import pico.erp.facility.schedule.data.FacilityScheduleId
-import pico.erp.process.data.ProcessId
-import pico.erp.process.type.data.ProcessTypeId
+import pico.erp.process.ProcessId
+import pico.erp.process.type.ProcessTypeId
 import pico.erp.shared.IntegrationConfiguration
-import pico.erp.work.schedule.category.data.WorkScheduleCategoryId
+import pico.erp.work.schedule.category.WorkScheduleCategoryId
 import spock.lang.Specification
 
 import java.time.OffsetDateTime

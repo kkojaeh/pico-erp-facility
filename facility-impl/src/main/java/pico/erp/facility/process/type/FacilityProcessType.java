@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.Facility;
 import pico.erp.facility.process.type.data.FacilityProcessTypeId;
-import pico.erp.process.type.data.ProcessTypeData;
+import pico.erp.process.type.ProcessTypeData;
 
 @Builder(toBuilder = true)
 @Getter

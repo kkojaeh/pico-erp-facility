@@ -10,7 +10,7 @@ import lombok.Value;
 import pico.erp.facility.Facility;
 import pico.erp.facility.process.type.FacilityProcessType;
 import pico.erp.facility.schedule.data.FacilityScheduleId;
-import pico.erp.process.data.ProcessData;
+import pico.erp.process.ProcessData;
 import pico.erp.shared.event.Event;
 
 public interface FacilityScheduleMessages {

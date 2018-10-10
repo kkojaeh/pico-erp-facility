@@ -14,7 +14,7 @@ import pico.erp.facility.data.FacilityId;
 import pico.erp.facility.process.type.FacilityProcessType;
 import pico.erp.facility.process.type.FacilityProcessTypeRepository;
 import pico.erp.facility.process.type.data.FacilityProcessTypeId;
-import pico.erp.process.type.data.ProcessTypeId;
+import pico.erp.process.type.ProcessTypeId;
 
 @Repository
 interface FacilityProcessTypeEntityRepository extends

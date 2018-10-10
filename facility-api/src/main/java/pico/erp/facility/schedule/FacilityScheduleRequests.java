@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pico.erp.facility.data.FacilityId;
 import pico.erp.facility.schedule.data.FacilityScheduleId;
-import pico.erp.process.data.ProcessId;
+import pico.erp.process.ProcessId;
 
 public interface FacilityScheduleRequests {
 

@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import pico.erp.facility.data.FacilityId;
-import pico.erp.process.data.ProcessId;
+import pico.erp.process.ProcessId;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)

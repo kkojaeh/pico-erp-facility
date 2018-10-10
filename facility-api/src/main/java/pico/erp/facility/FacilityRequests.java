@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import pico.erp.facility.category.data.FacilityCategoryId;
 import pico.erp.facility.data.FacilityId;
 import pico.erp.shared.TypeDefinitions;
-import pico.erp.work.schedule.category.data.WorkScheduleCategoryId;
+import pico.erp.work.schedule.category.WorkScheduleCategoryId;
 
 public interface FacilityRequests {
 
