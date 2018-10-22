@@ -2,7 +2,6 @@ package pico.erp.facility.category;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.Serializable;
-import java.util.UUID;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,10 +31,6 @@ public class FacilityCategoryId implements Serializable {
 
   public static FacilityCategoryId from(@NonNull String value) {
     return new FacilityCategoryId(value);
-  }
-
-  public static FacilityCategoryId generate() {
-    return from(UUID.randomUUID().toString());
   }
 
 }

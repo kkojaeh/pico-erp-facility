@@ -51,7 +51,7 @@ public class FacilityProcessTypeEntity implements Serializable {
 
   @EmbeddedId
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "ID", length = TypeDefinitions.UUID_BINARY_LENGTH))
   })
   FacilityProcessTypeId id;
 
@@ -60,7 +60,7 @@ public class FacilityProcessTypeEntity implements Serializable {
   FacilityEntity facility;
 
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "PROCESS_TYPE_ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "PROCESS_TYPE_ID", length = TypeDefinitions.ID_LENGTH))
   })
   ProcessTypeId processTypeId;
 

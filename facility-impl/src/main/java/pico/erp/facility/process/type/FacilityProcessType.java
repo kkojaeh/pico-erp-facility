@@ -31,7 +31,7 @@ public class FacilityProcessType implements Serializable {
 
   Facility facility;
 
-  ProcessTypeData processTypeData;
+  ProcessTypeData processType;
 
   BigDecimal speedVariationRate;
 
@@ -41,7 +41,7 @@ public class FacilityProcessType implements Serializable {
     FacilityProcessTypeMessages.CreateRequest request) {
     id = request.getId();
     facility = request.getFacility();
-    processTypeData = request.getProcessTypeData();
+    processType = request.getProcessType();
     speedVariationRate = request.getSpeedVariationRate();
     defectiveVariationRate = request.getDefectiveVariationRate();
     return new FacilityProcessTypeMessages.CreateResponse(

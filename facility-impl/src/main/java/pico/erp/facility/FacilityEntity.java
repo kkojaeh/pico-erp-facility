@@ -45,17 +45,17 @@ public class FacilityEntity implements Serializable {
 
   @EmbeddedId
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "ID", length = TypeDefinitions.UUID_BINARY_LENGTH))
   })
   FacilityId id;
 
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "CATEGORY_ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "CATEGORY_ID", length = TypeDefinitions.ID_LENGTH))
   })
   FacilityCategoryId categoryId;
 
   @AttributeOverrides({
-    @AttributeOverride(name = "value", column = @Column(name = "WORK_SCHEDULE_CATEGORY_ID"))
+    @AttributeOverride(name = "value", column = @Column(name = "WORK_SCHEDULE_CATEGORY_ID", length = TypeDefinitions.ID_LENGTH))
   })
   WorkScheduleCategoryId workScheduleCategoryId;
 

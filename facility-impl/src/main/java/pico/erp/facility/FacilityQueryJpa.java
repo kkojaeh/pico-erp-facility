@@ -65,7 +65,7 @@ public class FacilityQueryJpa implements FacilityQuery {
 
     return query.fetch().stream()
       .map(entity -> ExtendedLabeledValue.builder()
-        .value(entity.getId().getValue())
+        .value(entity.getId().getValue().toString())
         .label(entity.getName())
         .subLabel(
           Optional.ofNullable(entity.getCategoryId())

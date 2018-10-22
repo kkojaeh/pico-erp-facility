@@ -30,7 +30,7 @@ public abstract class FacilityProcessTypeMapper {
     return FacilityProcessType.builder()
       .id(entity.getId())
       .facility(facilityMapper.jpa(entity.getFacility()))
-      .processTypeData(map(entity.getProcessTypeId()))
+      .processType(map(entity.getProcessTypeId()))
       .speedVariationRate(entity.getSpeedVariationRate())
       .defectiveVariationRate(entity.getDefectiveVariationRate())
       .build();
@@ -38,7 +38,7 @@ public abstract class FacilityProcessTypeMapper {
 
   @Mappings({
     @Mapping(target = "facility", source = "facility.id"),
-    @Mapping(target = "processTypeId", source = "processTypeData.id"),
+    @Mapping(target = "processTypeId", source = "processType.id"),
     @Mapping(target = "createdBy", ignore = true),
     @Mapping(target = "createdDate", ignore = true),
     @Mapping(target = "lastModifiedBy", ignore = true),
@@ -58,13 +58,13 @@ public abstract class FacilityProcessTypeMapper {
 
   @Mappings({
     @Mapping(target = "facilityId", source = "facility.id"),
-    @Mapping(target = "processTypeId", source = "processTypeData.id")
+    @Mapping(target = "processTypeId", source = "processType.id")
   })
   public abstract FacilityProcessTypeData map(FacilityProcessType facilityProcessType);
 
   @Mappings({
     @Mapping(target = "facility", source = "facilityId"),
-    @Mapping(target = "processTypeData", source = "processTypeId")
+    @Mapping(target = "processType", source = "processTypeId")
   })
   public abstract FacilityProcessTypeMessages.CreateRequest map(
     FacilityProcessTypeRequests.CreateRequest request);

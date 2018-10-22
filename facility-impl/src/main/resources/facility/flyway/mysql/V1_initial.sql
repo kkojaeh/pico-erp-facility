@@ -1,6 +1,6 @@
 create table fct_facility (
-	id varchar(255) not null,
-	category_id varchar(255),
+	id binary(16) not null,
+	category_id varchar(50),
 	created_by_id varchar(50),
 	created_by_name varchar(50),
 	created_date datetime,
@@ -8,12 +8,12 @@ create table fct_facility (
 	last_modified_by_name varchar(50),
 	last_modified_date datetime,
 	name varchar(50),
-	work_schedule_category_id varchar(255),
+	work_schedule_category_id varchar(50),
 	primary key (id)
 ) engine=InnoDB;
 
 create table fct_facility_process_type (
-	id varchar(255) not null,
+	id binary(16) not null,
 	created_by_id varchar(50),
 	created_by_name varchar(50),
 	created_date datetime,
@@ -21,14 +21,14 @@ create table fct_facility_process_type (
 	last_modified_by_id varchar(50),
 	last_modified_by_name varchar(50),
 	last_modified_date datetime,
-	process_type_id varchar(255),
+	process_type_id varchar(50),
 	speed_variation_rate decimal(7,5),
-	facility_id varchar(255),
+	facility_id binary(16),
 	primary key (id)
 ) engine=InnoDB;
 
 create table fct_facility_schedule (
-	id varchar(255) not null,
+	id binary(16) not null,
 	begin_date_time datetime,
 	created_by_id varchar(50),
 	created_by_name varchar(50),
@@ -39,8 +39,8 @@ create table fct_facility_schedule (
 	last_modified_by_id varchar(50),
 	last_modified_by_name varchar(50),
 	last_modified_date datetime,
-	process_id varchar(255),
-	facility_id varchar(255),
+	process_id varchar(16),
+	facility_id binary(16),
 	primary key (id)
 ) engine=InnoDB;
 

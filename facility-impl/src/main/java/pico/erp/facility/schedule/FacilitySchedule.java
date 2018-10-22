@@ -52,7 +52,7 @@ public class FacilitySchedule implements Serializable {
     end = request.getEnd();
     durationMinutes = request.getDurationMinutes();
     val allowedProcess = request.getFacilityProcessTypes().stream()
-      .map(facilityProcessTypes -> facilityProcessTypes.getProcessTypeData())
+      .map(facilityProcessTypes -> facilityProcessTypes.getProcessType())
       .filter(processType -> processType.getId().equals(process.getTypeId()))
       .count() > 0;
 

@@ -23,7 +23,7 @@ public interface FacilityProcessTypeMessages {
     Facility facility;
 
     @NotNull
-    ProcessTypeData processTypeData;
+    ProcessTypeData processType;
 
     @NotNull
     BigDecimal speedVariationRate;
