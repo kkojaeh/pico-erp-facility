@@ -8,7 +8,6 @@ import org.mapstruct.Mappings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import pico.erp.facility.Facility;
-import pico.erp.facility.FacilityEntity;
 import pico.erp.facility.FacilityId;
 import pico.erp.facility.FacilityMapper;
 import pico.erp.process.type.ProcessTypeData;
@@ -29,7 +28,7 @@ public abstract class FacilityProcessTypeMapper {
   public FacilityProcessType jpa(FacilityProcessTypeEntity entity) {
     return FacilityProcessType.builder()
       .id(entity.getId())
-      .facility(facilityMapper.jpa(entity.getFacility()))
+      .facility(map(entity.getFacilityId()))
       .processType(map(entity.getProcessTypeId()))
       .speedVariationRate(entity.getSpeedVariationRate())
       .defectiveVariationRate(entity.getDefectiveVariationRate())
@@ -37,7 +36,7 @@ public abstract class FacilityProcessTypeMapper {
   }
 
   @Mappings({
-    @Mapping(target = "facility", source = "facility.id"),
+    @Mapping(target = "facilityId", source = "facility.id"),
     @Mapping(target = "processTypeId", source = "processType.id"),
     @Mapping(target = "createdBy", ignore = true),
     @Mapping(target = "createdDate", ignore = true),
@@ -45,10 +44,6 @@ public abstract class FacilityProcessTypeMapper {
     @Mapping(target = "lastModifiedDate", ignore = true)
   })
   public abstract FacilityProcessTypeEntity jpa(FacilityProcessType facilityProcessType);
-
-  protected FacilityEntity jpa(FacilityId facilityId) {
-    return facilityMapper.jpa(facilityId);
-  }
 
   protected ProcessTypeData map(ProcessTypeId processTypeId) {
     return Optional.ofNullable(processTypeId)

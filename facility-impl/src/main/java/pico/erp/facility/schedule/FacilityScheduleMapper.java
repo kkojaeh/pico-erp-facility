@@ -11,7 +11,6 @@ import org.mapstruct.Mappings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import pico.erp.facility.Facility;
-import pico.erp.facility.FacilityEntity;
 import pico.erp.facility.FacilityExceptions;
 import pico.erp.facility.FacilityId;
 import pico.erp.facility.FacilityMapper;
@@ -83,7 +82,7 @@ public abstract class FacilityScheduleMapper {
   public FacilitySchedule jpa(FacilityScheduleEntity entity) {
     return FacilitySchedule.builder()
       .id(entity.getId())
-      .facility(facilityMapper.jpa(entity.getFacility()))
+      .facility(map(entity.getFacilityId()))
       .process(map(entity.getProcessId()))
       .begin(entity.getBegin())
       .end(entity.getEnd())
@@ -93,7 +92,7 @@ public abstract class FacilityScheduleMapper {
   }
 
   @Mappings({
-    @Mapping(target = "facility", source = "facility.id"),
+    @Mapping(target = "facilityId", source = "facility.id"),
     @Mapping(target = "processId", source = "process.id"),
     @Mapping(target = "createdBy", ignore = true),
     @Mapping(target = "createdDate", ignore = true),
@@ -101,10 +100,6 @@ public abstract class FacilityScheduleMapper {
     @Mapping(target = "lastModifiedDate", ignore = true)
   })
   public abstract FacilityScheduleEntity jpa(FacilitySchedule facility);
-
-  protected FacilityEntity jpa(FacilityId facilityId) {
-    return facilityMapper.jpa(facilityId);
-  }
 
   @Mappings({
     @Mapping(target = "facility", source = "facilityId"),

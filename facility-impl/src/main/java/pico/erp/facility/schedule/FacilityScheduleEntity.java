@@ -11,8 +11,6 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -27,14 +25,14 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import pico.erp.facility.FacilityEntity;
+import pico.erp.facility.FacilityId;
 import pico.erp.process.ProcessId;
 import pico.erp.shared.TypeDefinitions;
 import pico.erp.shared.data.Auditor;
 
 @Entity(name = "FacilitySchedule")
 @Table(name = "FCT_FACILITY_SCHEDULE", indexes = {
-  @Index(name = "FCT_FACILITY_SCHEDULE_FACILITY_ID_IDX", columnList = "FACILITY_ID")
+  @Index(columnList = "FACILITY_ID")
 })
 @Data
 @EqualsAndHashCode(of = "id")
@@ -54,9 +52,10 @@ public class FacilityScheduleEntity implements Serializable {
   })
   FacilityScheduleId id;
 
-  @ManyToOne
-  @JoinColumn(name = "FACILITY_ID")
-  FacilityEntity facility;
+  @AttributeOverrides({
+    @AttributeOverride(name = "value", column = @Column(name = "FACILITY_ID", length = TypeDefinitions.UUID_BINARY_LENGTH))
+  })
+  FacilityId facilityId;
 
   @AttributeOverrides({
     @AttributeOverride(name = "value", column = @Column(name = "PROCESS_ID", length = TypeDefinitions.UUID_BINARY_LENGTH))

@@ -18,12 +18,12 @@ create table fct_facility_process_type (
 	created_by_name varchar(50),
 	created_date datetime,
 	defective_variation_rate decimal(7,5),
+	facility_id binary(16),
 	last_modified_by_id varchar(50),
 	last_modified_by_name varchar(50),
 	last_modified_date datetime,
 	process_type_id varchar(50),
 	speed_variation_rate decimal(7,5),
-	facility_id binary(16),
 	primary key (id)
 ) engine=InnoDB;
 
@@ -35,25 +35,20 @@ create table fct_facility_schedule (
 	created_date datetime,
 	duration_minutes bigint not null,
 	end_date_time datetime,
+	facility_id binary(16),
 	flexible bit not null,
 	last_modified_by_id varchar(50),
 	last_modified_by_name varchar(50),
 	last_modified_date datetime,
-	process_id varchar(16),
-	facility_id binary(16),
+	process_id binary(16),
 	primary key (id)
 ) engine=InnoDB;
 
-create index FCT_FACILITY_PROCESS_TYPE_FACILITY_ID_PROCESS_TYPE_ID_IDX
-	on fct_facility_process_type (facility_id,process_type_id);
-
-create index FCT_FACILITY_SCHEDULE_FACILITY_ID_IDX
-	on fct_facility_schedule (facility_id);
+create index IDX7x166231qg16jdcsh7610nbyo
+	on fct_facility_process_type (facility_id);
 
 alter table fct_facility_process_type
-	add constraint FKik4ish1wjg9iatsjru75oywu0 foreign key (facility_id)
-	references fct_facility (id);
+	add constraint UKov74n2vsw1xm5gibd86lwkwn2 unique (facility_id,process_type_id);
 
-alter table fct_facility_schedule
-	add constraint FKpxpy51jw4jfvk7g3katqk8oy5 foreign key (facility_id)
-	references fct_facility (id);
+create index IDXgkkgqs82jh5wsc0yiym75ypu5
+	on fct_facility_schedule (facility_id);

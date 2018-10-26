@@ -17,11 +17,11 @@ import pico.erp.process.type.ProcessTypeId;
 interface FacilityProcessTypeEntityRepository extends
   CrudRepository<FacilityProcessTypeEntity, FacilityProcessTypeId> {
 
-  @Query("SELECT CASE WHEN COUNT(fpt) > 0 THEN true ELSE false END FROM FacilityProcessType fpt WHERE fpt.facility.id = :facilityId AND fpt.processTypeId = :processTypeId")
+  @Query("SELECT CASE WHEN COUNT(fpt) > 0 THEN true ELSE false END FROM FacilityProcessType fpt WHERE fpt.facilityId = :facilityId AND fpt.processTypeId = :processTypeId")
   boolean exists(@Param("facilityId") FacilityId facilityId,
     @Param("processTypeId") ProcessTypeId processTypeId);
 
-  @Query("SELECT fpt FROM FacilityProcessType fpt WHERE fpt.facility.id = :facilityId")
+  @Query("SELECT fpt FROM FacilityProcessType fpt WHERE fpt.facilityId = :facilityId")
   Stream<FacilityProcessTypeEntity> findAllBy(@Param("facilityId") FacilityId facilityId);
 }
 
