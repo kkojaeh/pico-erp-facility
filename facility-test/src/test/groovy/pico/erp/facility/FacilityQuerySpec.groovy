@@ -10,7 +10,6 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Transactional
 import pico.erp.facility.category.FacilityCategoryId
 import pico.erp.shared.IntegrationConfiguration
-import pico.erp.work.schedule.category.WorkScheduleCategoryId
 import spock.lang.Specification
 
 @SpringBootTest(classes = [IntegrationConfiguration])
@@ -24,21 +23,6 @@ class FacilityQuerySpec extends Specification {
   @Autowired
   FacilityQuery facilityQuery
 
-
-  @Autowired
-  FacilityService facilityService
-
-  def facilityId = FacilityId.from("packaging-11")
-
-  def setup() {
-    facilityService.create(new FacilityRequests.CreateRequest(
-      id: facilityId,
-      name: "포장 11 라인",
-      categoryId: FacilityCategoryId.from("packaging"),
-      workScheduleCategoryId: WorkScheduleCategoryId.from("global")
-    ))
-  }
-
   def "카테고리로 검색"() {
     when:
     def result = facilityQuery.retrieve(new FacilityView.Filter(
@@ -46,7 +30,7 @@ class FacilityQuerySpec extends Specification {
     ), new PageRequest(0, 10))
 
     then:
-    result.totalElements == 3
+    result.totalElements == 2
   }
 
   def "라벨 검색"() {
@@ -54,7 +38,7 @@ class FacilityQuerySpec extends Specification {
     def result = facilityQuery.asLabels("포장", 10)
 
     then:
-    result.size() == 3
+    result.size() == 2
   }
 
 }

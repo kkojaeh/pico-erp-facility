@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Transactional
-import pico.erp.facility.category.FacilityCategoryId
 import pico.erp.facility.process.type.FacilityProcessTypeId
 import pico.erp.facility.process.type.FacilityProcessTypeRequests
 import pico.erp.facility.process.type.FacilityProcessTypeService
@@ -18,7 +17,6 @@ import pico.erp.facility.schedule.FacilityScheduleService
 import pico.erp.process.ProcessId
 import pico.erp.process.type.ProcessTypeId
 import pico.erp.shared.IntegrationConfiguration
-import pico.erp.work.schedule.category.WorkScheduleCategoryId
 import spock.lang.Specification
 
 import java.time.OffsetDateTime
@@ -40,24 +38,22 @@ class FacilitySchedulerServiceSpec extends Specification {
   @Autowired
   FacilityService facilityService
 
-  def facilityId = FacilityId.from("packaging-11")
+  def facilityId = FacilityId.from("packaging-1")
 
-  def facilityScheduleId = FacilityScheduleId.from("packaging-schedule-1")
+  def id = FacilityScheduleId.from("packaging-schedule-1")
+
+  def unknownId = FacilityScheduleId.from("unknown")
 
   def processId = ProcessId.from("item-3-process-1")
 
-  def processTypeId = ProcessTypeId.from("printing-offset")
+  def processTypeId = ProcessTypeId.from("PO")
 
   def facilityProcessTypeId = FacilityProcessTypeId.from("packaging-printing-offset")
 
   def setup() {
-    facilityService.create(new FacilityRequests.CreateRequest(
-      id: facilityId,
-      name: "포장 11 라인",
-      categoryId: FacilityCategoryId.from("packaging"),
-      workScheduleCategoryId: WorkScheduleCategoryId.from("global")
-    ))
-    facilityProcessTypeService.create(new FacilityProcessTypeRequests.CreateRequest(
+
+    facilityProcessTypeService.create(
+      new FacilityProcessTypeRequests.CreateRequest(
       id: facilityProcessTypeId,
       facilityId: facilityId,
       processTypeId: processTypeId,
@@ -66,7 +62,7 @@ class FacilitySchedulerServiceSpec extends Specification {
     ))
     facilityScheduleService.create(
       new FacilityScheduleRequests.CreateRequest(
-        id: facilityScheduleId,
+        id: id,
         facilityId: facilityId,
         begin: OffsetDateTime.parse("2018-08-11T09:00:00+09:00"),
         processId: processId,
@@ -76,61 +72,49 @@ class FacilitySchedulerServiceSpec extends Specification {
     )
   }
 
-  def "아이디로 존재하는 설비 일정 확인"() {
+  def "존재 - 아이디로 확인"() {
     when:
-    def exists = facilityScheduleService.exists(facilityScheduleId)
+    def exists = facilityScheduleService.exists(id)
 
     then:
     exists == true
   }
 
-  def "아이디로 존재하지 않는 설비 일정 확인"() {
+  def "존재 - 존재하지 않는 아이디로 확인"() {
     when:
-    def exists = facilityScheduleService.exists(FacilityScheduleId.from("unknown"))
+    def exists = facilityScheduleService.exists(unknownId)
 
     then:
     exists == false
   }
 
-  def "아이디로 존재하는 설비 일정를 조회"() {
+  def "조회 - 아이디로 조회"() {
     when:
-    def facilitySchedule = facilityScheduleService.get(facilityScheduleId)
+    def facilitySchedule = facilityScheduleService.get(id)
 
     then:
     facilitySchedule.facilityId == facilityId
     facilitySchedule.processId == processId
   }
 
-  def "아이디로 존재하지 않는 설비 일정을 조회"() {
+  def "조회 - 존재하지 않는 아이디로 조회"() {
     when:
-    facilityScheduleService.get(FacilityScheduleId.from("unknown"))
+    facilityScheduleService.get(unknownId)
 
     then:
     thrown(FacilityScheduleExceptions.NotFoundException)
   }
 
   def "설비 일정을 생성하면 작업에 지정된 시간에 따라 작업 시간이 계산된다"() {
-    when:
-    facilityScheduleService.get(FacilityScheduleId.from("unknown"))
 
-    then:
-    thrown(FacilityScheduleExceptions.NotFoundException)
   }
 
   def "작업일의 시간이 변경되면 총 일정시간을 기준으로 종료시간이 변경된다"() {
-    when:
-    facilityScheduleService.get(FacilityScheduleId.from("unknown"))
 
-    then:
-    thrown(FacilityScheduleExceptions.NotFoundException)
   }
 
   def "작업시간의 범위를 벗어나면 오류가 발생된다"() {
-    when:
-    facilityScheduleService.get(FacilityScheduleId.from("unknown"))
 
-    then:
-    thrown(FacilityScheduleExceptions.NotFoundException)
   }
 
 }

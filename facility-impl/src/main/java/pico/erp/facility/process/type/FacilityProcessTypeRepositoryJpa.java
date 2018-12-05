@@ -54,7 +54,7 @@ public class FacilityProcessTypeRepositoryJpa implements FacilityProcessTypeRepo
 
   @Override
   public boolean exists(@NotNull FacilityId facilityId, @NotNull ProcessTypeId processTypeId) {
-    return false;
+    return repository.exists(facilityId, processTypeId);
   }
 
   @Override
