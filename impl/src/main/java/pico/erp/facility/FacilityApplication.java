@@ -1,16 +1,26 @@
 package pico.erp.facility;
 
 import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
+import pico.erp.audit.AuditApi;
 import pico.erp.audit.AuditConfiguration;
+import pico.erp.company.CompanyApi;
+import pico.erp.facility.FacilityApi.Roles;
+import pico.erp.item.ItemApi;
+import pico.erp.process.ProcessApi;
+import pico.erp.shared.ApplicationId;
 import pico.erp.shared.ApplicationStarter;
 import pico.erp.shared.Public;
 import pico.erp.shared.SpringBootConfigs;
 import pico.erp.shared.data.Role;
 import pico.erp.shared.impl.ApplicationImpl;
+import pico.erp.work.schedule.WorkScheduleApi;
 
 @Slf4j
 @SpringBootConfigs
@@ -42,18 +52,31 @@ public class FacilityApplication implements ApplicationStarter {
   public AuditConfiguration auditConfiguration() {
     return AuditConfiguration.builder()
       .packageToScan("pico.erp.facility")
-      .entity(FacilityRoles.class)
+      .entity(Roles.class)
       .build();
   }
 
-  @Override
-  public int getOrder() {
-    return 3;
+  @Bean
+  @Public
+  public Role facilityAccessorRole() {
+    return Roles.FACILITY_ACCESSOR;
+  }
+
+  @Bean
+  @Public
+  public Role facilityManagerRole() {
+    return Roles.FACILITY_MANAGER;
   }
 
   @Override
-  public boolean isWeb() {
-    return false;
+  public Set<ApplicationId> getDependencies() {
+    return Stream.of(
+      AuditApi.ID,
+      ItemApi.ID,
+      CompanyApi.ID,
+      ProcessApi.ID,
+      WorkScheduleApi.ID
+    ).collect(Collectors.toSet());
   }
 
   @Override
@@ -61,16 +84,14 @@ public class FacilityApplication implements ApplicationStarter {
     return new ApplicationImpl(application().run(args));
   }
 
-  @Bean
-  @Public
-  public Role facilityAccessorRole() {
-    return FacilityRoles.FACILITY_ACCESSOR;
+  @Override
+  public ApplicationId getId() {
+    return FacilityApi.ID;
   }
 
-  @Bean
-  @Public
-  public Role facilityManagerRole() {
-    return FacilityRoles.FACILITY_MANAGER;
+  @Override
+  public boolean isWeb() {
+    return false;
   }
 
 }
