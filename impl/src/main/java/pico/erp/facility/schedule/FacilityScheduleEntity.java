@@ -2,7 +2,7 @@ package pico.erp.facility.schedule;
 
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -63,10 +63,10 @@ public class FacilityScheduleEntity implements Serializable {
   ProcessId processId;
 
   @Column(name = "BEGIN_DATE_TIME")
-  OffsetDateTime begin;
+  LocalDateTime begin;
 
   @Column(name = "END_DATE_TIME")
-  OffsetDateTime end;
+  LocalDateTime end;
 
   long durationMinutes;
 
@@ -82,7 +82,7 @@ public class FacilityScheduleEntity implements Serializable {
 
   @CreatedDate
   @Column(updatable = false)
-  OffsetDateTime createdDate;
+  LocalDateTime createdDate;
 
   @Embedded
   @AttributeOverrides({
@@ -93,6 +93,6 @@ public class FacilityScheduleEntity implements Serializable {
   Auditor lastModifiedBy;
 
   @LastModifiedDate
-  OffsetDateTime lastModifiedDate;
+  LocalDateTime lastModifiedDate;
 
 }

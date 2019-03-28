@@ -1,7 +1,7 @@
 package pico.erp.facility.schedule;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import javax.persistence.Id;
 import lombok.AccessLevel;
@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
-import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.Facility;
 import pico.erp.process.ProcessData;
 
@@ -22,7 +21,6 @@ import pico.erp.process.ProcessData;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "id")
-@Audit(alias = "facility-schedule")
 public class FacilitySchedule implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -36,9 +34,9 @@ public class FacilitySchedule implements Serializable {
 
   boolean flexible;
 
-  OffsetDateTime begin;
+  LocalDateTime begin;
 
-  OffsetDateTime end;
+  LocalDateTime end;
 
   long durationMinutes;
 

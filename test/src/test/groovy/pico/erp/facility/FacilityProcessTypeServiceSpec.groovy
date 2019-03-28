@@ -1,26 +1,28 @@
 package pico.erp.facility
 
+import kkojaeh.spring.boot.component.SpringBootTestComponent
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.ComponentScan
-import org.springframework.context.annotation.Configuration
 import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Transactional
+import pico.erp.company.CompanyApplication
 import pico.erp.facility.process.type.FacilityProcessTypeExceptions
 import pico.erp.facility.process.type.FacilityProcessTypeId
 import pico.erp.facility.process.type.FacilityProcessTypeRequests
 import pico.erp.facility.process.type.FacilityProcessTypeService
+import pico.erp.item.ItemApplication
+import pico.erp.process.ProcessApplication
 import pico.erp.process.type.ProcessTypeId
-import pico.erp.shared.IntegrationConfiguration
+import pico.erp.shared.TestParentApplication
+import pico.erp.work.schedule.WorkScheduleApplication
 import spock.lang.Specification
 
-@SpringBootTest(classes = [IntegrationConfiguration])
+@SpringBootTest(classes = [FacilityApplication, TestConfig])
+@SpringBootTestComponent(parent = TestParentApplication, siblings = [ItemApplication, ProcessApplication, CompanyApplication, WorkScheduleApplication])
 @Transactional
 @Rollback
 @ActiveProfiles("test")
-@Configuration
-@ComponentScan("pico.erp.config")
 class FacilityProcessTypeServiceSpec extends Specification {
 
   @Autowired

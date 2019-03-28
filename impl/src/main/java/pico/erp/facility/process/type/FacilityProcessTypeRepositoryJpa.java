@@ -44,12 +44,12 @@ public class FacilityProcessTypeRepositoryJpa implements FacilityProcessTypeRepo
 
   @Override
   public void deleteBy(@NotNull FacilityProcessTypeId id) {
-    repository.delete(id);
+    repository.deleteById(id);
   }
 
   @Override
   public boolean exists(@NotNull FacilityProcessTypeId id) {
-    return repository.exists(id);
+    return repository.existsById(id);
   }
 
   @Override
@@ -65,13 +65,13 @@ public class FacilityProcessTypeRepositoryJpa implements FacilityProcessTypeRepo
 
   @Override
   public Optional<FacilityProcessType> findBy(@NotNull FacilityProcessTypeId id) {
-    return Optional.ofNullable(repository.findOne(id))
+    return repository.findById(id)
       .map(mapper::jpa);
   }
 
   @Override
   public void update(@NotNull FacilityProcessType facilityProcessType) {
-    val entity = repository.findOne(facilityProcessType.getId());
+    val entity = repository.findById(facilityProcessType.getId()).get();
     mapper.pass(mapper.jpa(facilityProcessType), entity);
     repository.save(entity);
   }

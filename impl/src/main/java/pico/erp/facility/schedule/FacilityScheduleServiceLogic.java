@@ -1,22 +1,20 @@
 package pico.erp.facility.schedule;
 
 import javax.validation.constraints.NotNull;
+import kkojaeh.spring.boot.component.Give;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import pico.erp.audit.AuditService;
 import pico.erp.facility.schedule.FacilityScheduleRequests.CreateRequest;
 import pico.erp.facility.schedule.FacilityScheduleRequests.DeleteRequest;
 import pico.erp.facility.schedule.FacilityScheduleRequests.UpdateRequest;
-import pico.erp.shared.Public;
 import pico.erp.shared.event.EventPublisher;
 
 @SuppressWarnings("Duplicates")
 @Service
-@Public
+@Give
 @Transactional
 @Validated
 public class FacilityScheduleServiceLogic implements FacilityScheduleService {
@@ -26,10 +24,6 @@ public class FacilityScheduleServiceLogic implements FacilityScheduleService {
 
   @Autowired
   private FacilityScheduleRepository facilityScheduleRepository;
-
-  @Lazy
-  @Autowired
-  private AuditService auditService;
 
   @Autowired
   private EventPublisher eventPublisher;
@@ -42,7 +36,6 @@ public class FacilityScheduleServiceLogic implements FacilityScheduleService {
       throw new FacilityScheduleExceptions.AlreadyExistsException();
     }
     val created = facilityScheduleRepository.create(facilitySchedule);
-    auditService.commit(created);
     eventPublisher.publishEvents(response.getEvents());
     return mapper.map(created);
   }
@@ -53,7 +46,6 @@ public class FacilityScheduleServiceLogic implements FacilityScheduleService {
       .orElseThrow(FacilityScheduleExceptions.NotFoundException::new);
     val response = facilitySchedule.apply(mapper.map(request));
     facilityScheduleRepository.deleteBy(facilitySchedule.getId());
-    auditService.delete(facilitySchedule);
     eventPublisher.publishEvents(response.getEvents());
   }
 
@@ -75,7 +67,6 @@ public class FacilityScheduleServiceLogic implements FacilityScheduleService {
       .orElseThrow(FacilityScheduleExceptions.NotFoundException::new);
     val response = facilitySchedule.apply(mapper.map(request));
     facilityScheduleRepository.update(facilitySchedule);
-    auditService.commit(facilitySchedule);
     eventPublisher.publishEvents(response.getEvents());
   }
 }

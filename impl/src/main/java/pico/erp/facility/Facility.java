@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.category.FacilityCategory;
 import pico.erp.work.schedule.category.WorkScheduleCategory;
 
@@ -20,7 +19,6 @@ import pico.erp.work.schedule.category.WorkScheduleCategory;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "id")
-@Audit(alias = "facility")
 public class Facility implements Serializable {
 
   private static final long serialVersionUID = 1L;

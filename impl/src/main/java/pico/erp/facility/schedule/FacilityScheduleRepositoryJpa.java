@@ -33,23 +33,23 @@ public class FacilityScheduleRepositoryJpa implements FacilityScheduleRepository
 
   @Override
   public void deleteBy(FacilityScheduleId id) {
-    repository.delete(id);
+    repository.deleteById(id);
   }
 
   @Override
   public boolean exists(FacilityScheduleId id) {
-    return repository.exists(id);
+    return repository.existsById(id);
   }
 
   @Override
   public Optional<FacilitySchedule> findBy(FacilityScheduleId id) {
-    return Optional.ofNullable(repository.findOne(id))
+    return repository.findById(id)
       .map(mapper::jpa);
   }
 
   @Override
   public void update(FacilitySchedule facilitySchedule) {
-    val entity = repository.findOne(facilitySchedule.getId());
+    val entity = repository.findById(facilitySchedule.getId()).get();
     mapper.pass(mapper.jpa(facilitySchedule), entity);
     repository.save(entity);
   }
