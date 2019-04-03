@@ -2,7 +2,7 @@ package pico.erp.facility.schedule;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
-import kkojaeh.spring.boot.component.Take;
+import kkojaeh.spring.boot.component.ComponentAutowired;
 import lombok.val;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
@@ -29,7 +29,7 @@ public abstract class FacilityScheduleMapper {
   @Autowired
   protected FacilityMapper facilityMapper;
 
-  @Take
+  @ComponentAutowired
   private WorkScheduleService workScheduleService;
 
   @Lazy
@@ -40,7 +40,7 @@ public abstract class FacilityScheduleMapper {
   @Autowired
   private FacilityProcessTypeRepository facilityProcessTypeRepository;
 
-  @Take
+  @ComponentAutowired
   private ProcessService processService;
 
   @AfterMapping

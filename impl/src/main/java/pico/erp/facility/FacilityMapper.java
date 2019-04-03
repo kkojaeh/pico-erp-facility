@@ -1,7 +1,7 @@
 package pico.erp.facility;
 
 import java.util.Optional;
-import kkojaeh.spring.boot.component.Take;
+import kkojaeh.spring.boot.component.ComponentAutowired;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
@@ -38,10 +38,10 @@ public abstract class FacilityMapper {
   @Autowired
   private FacilityProcessTypeRepository facilityProcessTypeRepository;
 
-  @Take
+  @ComponentAutowired
   private WorkScheduleService workScheduleService;
 
-  @Take
+  @ComponentAutowired
   private ProcessService processService;
 
   public Facility jpa(FacilityEntity entity) {

@@ -3,7 +3,7 @@ package pico.erp.facility.process.type;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.constraints.NotNull;
-import kkojaeh.spring.boot.component.Give;
+import kkojaeh.spring.boot.component.ComponentBean;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import pico.erp.shared.event.EventPublisher;
 
 @SuppressWarnings("Duplicates")
 @Service
-@Give
+@ComponentBean
 @Transactional
 @Validated
 public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeService {

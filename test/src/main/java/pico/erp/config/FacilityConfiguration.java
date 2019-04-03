@@ -1,6 +1,6 @@
 package pico.erp.config;
 
-import kkojaeh.spring.boot.component.Give;
+import kkojaeh.spring.boot.component.ComponentBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pico.erp.facility.category.FacilityCategory;
@@ -11,7 +11,7 @@ import pico.erp.facility.category.FacilityCategoryId;
 public class FacilityConfiguration {
 
   @Bean
-  @Give
+  @ComponentBean
   public FacilityCategory packagingFacilityCategory() {
     return FacilityCategoryImpl.builder()
       .id(FacilityCategoryId.from("packaging"))
@@ -20,7 +20,7 @@ public class FacilityConfiguration {
   }
 
   @Bean
-  @Give
+  @ComponentBean
   public FacilityCategory pressMoldingFacilityCategory() {
     return FacilityCategoryImpl.builder()
       .id(FacilityCategoryId.from("press-molding"))
