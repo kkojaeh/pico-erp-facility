@@ -3,20 +3,18 @@ package pico.erp.facility.process.type;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.constraints.NotNull;
+import kkojaeh.spring.boot.component.ComponentBean;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import pico.erp.audit.AuditService;
 import pico.erp.facility.FacilityId;
-import pico.erp.shared.Public;
 import pico.erp.shared.event.EventPublisher;
 
 @SuppressWarnings("Duplicates")
 @Service
-@Public
+@ComponentBean
 @Transactional
 @Validated
 public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeService {
@@ -30,10 +28,6 @@ public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeServi
   @Autowired
   private FacilityProcessTypeMapper mapper;
 
-  @Lazy
-  @Autowired
-  private AuditService auditService;
-
   @Override
   public FacilityProcessTypeData create(FacilityProcessTypeRequests.CreateRequest request) {
     val facilityProcessType = new FacilityProcessType();
@@ -45,7 +39,6 @@ public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeServi
       throw new FacilityProcessTypeExceptions.AlreadyExistsException();
     }
     val created = facilityProcessTypeRepository.create(facilityProcessType);
-    auditService.commit(created);
     eventPublisher.publishEvents(response.getEvents());
     return mapper.map(created);
   }
@@ -56,7 +49,6 @@ public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeServi
       .orElseThrow(FacilityProcessTypeExceptions.NotFoundException::new);
     val response = facilityProcessType.apply(mapper.map(request));
     facilityProcessTypeRepository.deleteBy(facilityProcessType.getId());
-    auditService.delete(facilityProcessType);
     eventPublisher.publishEvents(response.getEvents());
   }
 
@@ -78,7 +70,6 @@ public class FacilityProcessTypeServiceLogic implements FacilityProcessTypeServi
       .orElseThrow(FacilityProcessTypeExceptions.NotFoundException::new);
     val response = facility.apply(mapper.map(request));
     facilityProcessTypeRepository.update(facility);
-    auditService.commit(facility);
     eventPublisher.publishEvents(response.getEvents());
   }
 

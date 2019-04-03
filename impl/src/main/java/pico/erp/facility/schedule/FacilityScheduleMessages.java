@@ -1,6 +1,6 @@
 package pico.erp.facility.schedule;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
 import javax.validation.Valid;
@@ -29,9 +29,9 @@ public interface FacilityScheduleMessages {
 
     boolean flexible;
 
-    OffsetDateTime begin;
+    LocalDateTime begin;
 
-    OffsetDateTime end;
+    LocalDateTime end;
 
     long durationMinutes;
 
@@ -45,9 +45,9 @@ public interface FacilityScheduleMessages {
 
     boolean flexible;
 
-    OffsetDateTime begin;
+    LocalDateTime begin;
 
-    OffsetDateTime end;
+    LocalDateTime end;
 
     long durationMinutes;
 

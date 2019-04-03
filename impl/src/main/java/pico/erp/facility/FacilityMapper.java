@@ -1,6 +1,7 @@
 package pico.erp.facility;
 
 import java.util.Optional;
+import kkojaeh.spring.boot.component.ComponentAutowired;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
@@ -37,16 +38,11 @@ public abstract class FacilityMapper {
   @Autowired
   private FacilityProcessTypeRepository facilityProcessTypeRepository;
 
-  @Lazy
-  @Autowired
+  @ComponentAutowired
   private WorkScheduleService workScheduleService;
 
-  @Lazy
-  @Autowired
+  @ComponentAutowired
   private ProcessService processService;
-
-  @Autowired
-  private FacilityEntityRepository facilityEntityRepository;
 
   public Facility jpa(FacilityEntity entity) {
     return Facility.builder()
@@ -66,12 +62,6 @@ public abstract class FacilityMapper {
     @Mapping(target = "lastModifiedDate", ignore = true)
   })
   public abstract FacilityEntity jpa(Facility facility);
-
-  public FacilityEntity jpa(FacilityId facilityId) {
-    return Optional.ofNullable(facilityId)
-      .map(facilityEntityRepository::findOne)
-      .orElse(null);
-  }
 
   public Facility map(FacilityId facilityId) {
     return Optional.ofNullable(facilityId)

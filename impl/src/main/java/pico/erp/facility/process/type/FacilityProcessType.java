@@ -11,7 +11,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import pico.erp.audit.annotation.Audit;
 import pico.erp.facility.Facility;
 import pico.erp.process.type.ProcessTypeData;
 
@@ -21,7 +20,6 @@ import pico.erp.process.type.ProcessTypeData;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "id")
-@Audit(alias = "facility-process-type")
 public class FacilityProcessType implements Serializable {
 
   private static final long serialVersionUID = 1L;

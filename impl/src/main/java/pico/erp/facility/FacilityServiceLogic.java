@@ -1,21 +1,19 @@
 package pico.erp.facility;
 
+import kkojaeh.spring.boot.component.ComponentBean;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import pico.erp.audit.AuditService;
 import pico.erp.facility.category.FacilityCategory;
 import pico.erp.facility.category.FacilityCategoryId;
 import pico.erp.facility.category.FacilityCategoryRepository;
-import pico.erp.shared.Public;
 import pico.erp.shared.event.EventPublisher;
 
 @SuppressWarnings("Duplicates")
 @Service
-@Public
+@ComponentBean
 @Transactional
 @Validated
 public class FacilityServiceLogic implements FacilityService {
@@ -29,10 +27,6 @@ public class FacilityServiceLogic implements FacilityService {
   @Autowired
   private FacilityMapper mapper;
 
-  @Lazy
-  @Autowired
-  private AuditService auditService;
-
   @Autowired
   private FacilityCategoryRepository facilityCategoryRepository;
 
@@ -44,7 +38,6 @@ public class FacilityServiceLogic implements FacilityService {
       throw new FacilityExceptions.AlreadyExistsException();
     }
     val created = facilityRepository.create(facility);
-    auditService.commit(created);
     eventPublisher.publishEvents(response.getEvents());
     return mapper.map(created);
   }
@@ -55,7 +48,6 @@ public class FacilityServiceLogic implements FacilityService {
       .orElseThrow(FacilityExceptions.NotFoundException::new);
     val response = facility.apply(mapper.map(request));
     facilityRepository.deleteBy(facility.getId());
-    auditService.delete(facility);
     eventPublisher.publishEvents(response.getEvents());
   }
 
@@ -77,7 +69,6 @@ public class FacilityServiceLogic implements FacilityService {
       .orElseThrow(FacilityExceptions.NotFoundException::new);
     val response = facility.apply(mapper.map(request));
     facilityRepository.update(facility);
-    auditService.commit(facility);
     eventPublisher.publishEvents(response.getEvents());
   }
 

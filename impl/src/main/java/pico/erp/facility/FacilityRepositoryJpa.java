@@ -32,23 +32,23 @@ public class FacilityRepositoryJpa implements FacilityRepository {
 
   @Override
   public void deleteBy(FacilityId id) {
-    repository.delete(id);
+    repository.deleteById(id);
   }
 
   @Override
   public boolean exists(FacilityId id) {
-    return repository.exists(id);
+    return repository.existsById(id);
   }
 
   @Override
   public Optional<Facility> findBy(FacilityId id) {
-    return Optional.ofNullable(repository.findOne(id))
+    return repository.findById(id)
       .map(mapper::jpa);
   }
 
   @Override
   public void update(Facility facility) {
-    val entity = repository.findOne(facility.getId());
+    val entity = repository.findById(facility.getId()).get();
     mapper.pass(mapper.jpa(facility), entity);
     repository.save(entity);
   }
