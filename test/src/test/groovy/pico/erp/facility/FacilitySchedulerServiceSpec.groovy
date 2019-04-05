@@ -19,7 +19,7 @@ import pico.erp.shared.ComponentDefinitionServiceLoaderTestComponentSiblingsSupp
 import pico.erp.shared.TestParentApplication
 import spock.lang.Specification
 
-import java.time.LocalDateTime
+import java.time.OffsetDateTime
 
 @SpringBootTest(classes = [FacilityApplication, TestConfig])
 @SpringBootTestComponent(parent = TestParentApplication, siblingsSupplier = ComponentDefinitionServiceLoaderTestComponentSiblingsSupplier.class)
@@ -63,7 +63,7 @@ class FacilitySchedulerServiceSpec extends Specification {
       new FacilityScheduleRequests.CreateRequest(
         id: id,
         facilityId: facilityId,
-        begin: LocalDateTime.parse("2018-08-11T09:00:00"),
+        begin: OffsetDateTime.parse("2018-08-11T09:00:00+09:00"),
         processId: processId,
         durationMinutes: 60 * 12,
         flexible: false,

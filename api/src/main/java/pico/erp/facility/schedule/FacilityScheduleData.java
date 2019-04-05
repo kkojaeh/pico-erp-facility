@@ -1,7 +1,7 @@
 package pico.erp.facility.schedule;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import javax.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -24,9 +24,9 @@ public class FacilityScheduleData implements Serializable {
 
   ProcessId processId;
 
-  LocalDateTime begin;
+  OffsetDateTime begin;
 
-  LocalDateTime end;
+  OffsetDateTime end;
 
   long durationMinutes;
 
